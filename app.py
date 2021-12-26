@@ -1,6 +1,7 @@
 from flask import Flask, request         # 서버 구현을 위한 객체
 from flask_restx import Api, Resource
 from sample.todo import Todo   # api 구현을 위한 객체
+from sample.auth import Auth    # bcrypt, PyJWT를 이용한 인증처리
 
 app = Flask(__name__)   # flask 객체 선언, 파라미터로 어플리케이션 패키지 이름 넣어줌
 # flask 객체에 api 객체 등록
@@ -33,6 +34,8 @@ class Hello(Resource) :
 # 분리한 파일 추가
 api.add_namespace(Todo, '/todos')
 
+# 인증방식 추가
+api.add_namespace(Auth, '/auth')
 
 
 if __name__ == "__main__" :
